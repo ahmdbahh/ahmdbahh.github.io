@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad Shabbaah Syakur - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <style>
+        /* Deep Space Dark Palette & Variables */
+        :root {
+            --background: #051424;
+            --surface: #051424;
+            --surface-container: #122131;
+            --surface-container-high: #1c2b3c;
+            --surface-container-highest: #273647;
+            
+            --primary: #adc6ff;
+            --on-primary: #002e6a;
+            --secondary: #ffb0cd;
+            --on-secondary: #640039;
+            
+            --text-main: #d4e4fa;
+            --text-muted: #c2c6d6;
+            --outline: #424754;
+            
+            --radius-md: 0.5rem;
+            --radius-lg: 1rem;
+            --radius-full: 9999px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: rgba(5, 20, 36, 0.8.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--outline);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { 
+            color: var(--primary); 
+            text-shadow: 0 0 8px rgba(173, 198, 255, 0.4);
+        }
+
+        /* General Section Layout */
+        section {
+            padding: 7rem 5% 4rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 3rem;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--on-primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 15px rgba(173, 198, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--outline);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background-color: rgba(173, 198, 255, 0.05);
+            box-shadow: 0 0 15px rgba(173, 198, 255, 0.15);
+        }
+
+        /* Home Section */
+        #home {
+            text-align: center;
+            background: radial-gradient(circle at center, #122131 0%, #051424 100%);
+        }
+
+        .home-intro {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .home-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        .home-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .home-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-icons a {
+            color: var(--text-muted);
+            font-size: 1.8rem;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--surface);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .about-img {
+            flex: 1;
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--outline);
+            background-color: var(--surface-container);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: border-color 0.3s;
+        }
+
+        .profile-pic:hover {
+            border-color: var(--primary);
+        }
+
+        .about-text {
+            flex: 1.5;
+            color: var(--text-muted);
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* Resume Section */
+        #resume {
+            background-color: var(--surface);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--surface-container);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--outline);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 5px 20px rgba(173, 198, 255, 0.05);
+        }
+
+        .card h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card strong {
+            color: var(--text-main);
+            font-size: 1.1rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            padding: 0.4rem 0.9rem;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid transparent;
+        }
+
+        .tag.code { 
+            background: var(--surface-container-highest); 
+            color: var(--text-main);
+            border-color: var(--outline);
+        }
+
+        .tag.design { 
+            background: rgba(255, 176, 205, 0.1); 
+            color: var(--secondary);
+            border-color: rgba(255, 176, 205, 0.3);
+        }
+
+        /* Portfolio Section */
+        #portfolio {
+            background-color: var(--surface);
+        }
+
+        .portfolio-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .tab-btn {
+            padding: 0.7rem 2rem;
+            border: 1px solid var(--outline);
+            background: var(--surface-container);
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: var(--on-primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(173, 198, 255, 0.2);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            grid-auto-flow: dense;
+        }
+
+        .portfolio-item {
+            background: var(--surface-container);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--outline);
+            overflow: hidden;
+            display: none;
+            transition: all 0.3s ease;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .portfolio-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: var(--surface-container-high);
+            border-bottom: 1px solid var(--outline);
+        }
+
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+
+        .portfolio-info h4 {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ==========================================================================
+           Khusus Styling Gambar Portofolio SMK DKV (Responsive Portrait & Landscape)
+           ========================================================================== */
+
+        .portfolio-item.smk.portrait .portfolio-img-pure {
+            width: 100%;
+            height: 540px; /* Tinggi proporsional portrait */
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Styling Khusus untuk Kategori Sertifikat (Landscape Grid) */
+        .portfolio-item.sertifikat .portfolio-img-pure {
+            width: 100%;
+            height: 230px; /* Mengunci tinggi agar rasio gambar menjadi landscape standar */
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--surface);
+            min-height: 60vh;
+        }
+
+        .contact-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--surface-container);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--outline);
+        }
+
+        .contact-container i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #010f1f;
+            border-top: 1px solid var(--outline);
+            padding: 3rem 5% 2rem;
+            text-align: center;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            list-style: none;
+        }
+
+        .footer-nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-nav a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--outline);
+            padding-top: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .home-title {
+                font-size: 2.5rem;
+            }
+            nav ul {
+                display: none;
+            }
+            .portfolio-item.smk.landscape .portfolio-img-pure,
+            .portfolio-item.smk.portrait .portfolio-img-pure {
+                height: 250px; /* Normalisasi ukuran di handphone agar seragam responsif */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#home" class="logo">ahmdbahh</a>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#portfolio">Portofolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <p class="home-intro">Selamat datang di website portofolio</p>
+        <h1 class="home-title">Ahmad Shabbaah Syakur</h1>
+        <h2 class="home-subtitle">UI/UX Designer & Mobile Developer</h2>
+        
+        <div class="home-buttons">
+            <a href="#contact" class="btn btn-primary">Hubungi Saya</a>
+            <a href="#portfolio" class="btn btn-outline">Lihat Portofolio</a>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://ahmdbahh.github.io/" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/ahmad-shabbaah-syakur-767140304" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://instagram.com/ahmd.bahh/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">Tentang Saya</h2>
+        <div class="about-content">
+            <div class="about-img">
+                <img src="DSC06990(3).jpg" alt="Foto Profil" class="profile-pic" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20fill%3D%22%23122131%22%20width%3D%22300%22%20height%3D%22300%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20dy%3D%2210.5%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EFoto%20Profil%3C%2Ftext%3E%3C%2Fsvg%3E'">
+            </div>
+            <div class="about-text">
+                <p>Saat ini saya sedang menempuh pendidikan strata satu (S1) di jurusan <strong>Teknik Informatika</strong> Universitas Budi Luhur, dengan fondasi keilmuan desain dari masa <strong>SMK jurusan Desain Komunikasi Visual (DKV)</strong>.</p>
+                
+                <p>Kombinasi dua bidang ini membentuk peminatan utama saya: menjembatani estetika visual dengan logika pemrograman. Saya memiliki ketertarikan kuat pada <strong>Mobile Application Development</strong> (Java, Flutter, React Native) serta <strong>UI/UX Design</strong>.</p>
+                
+                <p>Selain itu, saya juga aktif mengeksplorasi integrasi Kecerdasan Buatan (AI) dan pengolahan citra digital (Python/OpenCV) ke dalam pengembangan perangkat lunak modern.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume">
+        <h2 class="section-title">Resume</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Pendidikan</h3>
+                <div style="margin-bottom: 1.5rem;">
+                    <strong>Universitas Budi Luhur</strong>
+                    <p style="color: var(--primary); font-size: 0.9rem; margin-bottom: 0.3rem;">S1 Teknik Informatika (2024 - Sekarang)</p>
+                    <p style="font-size: 0.95rem;">Fokus pada pengembangan perangkat lunak, kecerdasan buatan, dan arsitektur sistem informasi.</p>
+                </div>
+                <div>
+                    <strong>SMK Negeri 2 Kota Tangerang Selatan</strong>
+                    <p style="color: var(--secondary); font-size: 0.9rem; margin-bottom: 0.3rem;">Desain Komunikasi Visual (2021 - 2024)</p>
+                    <p style="font-size: 0.95rem;">Mempelajari prinsip desain, tipografi, kombinasi warna, dan komunikasi visual grafis.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Keterampilan</h3>
+                <p style="font-size: 0.95rem; margin-bottom: 1rem;">Menggabungkan kreativitas desain dengan kemampuan teknis pemrograman modern.</p>
+                
+                <strong style="font-size: 0.9rem; color: var(--primary);">Development & Programming</strong>
+                <div class="skill-tags">
+                    <span class="tag code">Android Studio</span>
+                    <span class="tag code">Google Colab</span>
+                    <span class="tag code">Flutter</span>
+                    <span class="tag code">React Native</span>
+                    <span class="tag code">Python & OpenCV</span>
+                </div>
+
+                <strong style="font-size: 0.9rem; display: block; margin-top: 1.5rem; color: var(--secondary);">Desain & Editing</strong>
+                <div class="skill-tags">
+                    <span class="tag design">Graphic Design</span>
+                    <span class="tag design">Poster Design</span>
+                    <span class="tag design">Videography</span>
+                    <span class="tag design">Video Editing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2 class="section-title">Portofolio</h2>
+        
+        <div class="portfolio-tabs">
+            <button class="tab-btn active" onclick="filterPortfolio('kuliah')">IT</button>
+            <button class="tab-btn" onclick="filterPortfolio('smk')">DKV</button>
+            <button class="tab-btn" onclick="filterPortfolio('sertifikat')">Sertifikat</button>
+        </div>
+
+        <div class="portfolio-grid">
+            
+            <div class="portfolio-item kuliah">
+                <img src="gambar-app-berita.jpg" alt="Aplikasi Berita" class="portfolio-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22200%22%20viewBox%3D%220%200%20400%20200%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22200%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20dy%3D%225%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EGambar Project 1%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                <div class="portfolio-info">
+                    <h4>Aplikasi Pembaca Berita TTS</h4>
+                    <p>Integrasi model Text-to-Speech (Tacotron2/FastSpeech2) pada aplikasi mobile berbahasa Indonesia.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item kuliah">
+                <img src="gambar-opencv.jpg" alt="Sistem Pengukuran" class="portfolio-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22200%22%20viewBox%3D%220%200%20400%20200%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22200%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20dy%3D%225%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EGambar Project 2%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                <div class="portfolio-info">
+                    <h4>Pengolahan Citra Digital</h4>
+                    <p>Proyek Python & OpenCV menggunakan metode filtering CLAHE dan deteksi tepi Sobel untuk analisis gambar digital.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item kuliah">
+                <img src="gambar-mobile.jpg" alt="Mobile UI" class="portfolio-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22200%22%20viewBox%3D%220%200%20400%20200%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22200%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20dy%3D%225%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EGambar Project 3%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                <div class="portfolio-info">
+                    <h4>Android Layout Management</h4>
+                    <p>Implementasi UI/UX design ke dalam format XML pada Android Studio menggunakan figma-to-code principles.</p>
+                </div>
+            </div>
+
+           <div class="portfolio-item smk portrait">
+                <img src="Baldwin IV (yoru ni kakeru).jpg" alt="Karya DKV Portrait" class="portfolio-img-pure" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22600%22%20viewBox%3D%220%200%20400%20600%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22600%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2218%22%20dy%3D%227%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EKarya DKV 1 (Portrait Tall)%3C%2Ftext%3E%3C%2Fsvg%3E'">
+            </div>
+
+            <div class="portfolio-item smk portrait">
+                <img src="Katchaw nih gengs 2.jpg" alt="Karya DKV Portrait" class="portfolio-img-pure" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22600%22%20viewBox%3D%220%200%20400%20600%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22600%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2218%22%20dy%3D%227%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EKarya DKV 2 (Portrait Tall)%3C%2Ftext%3E%3C%2Fsvg%3E'">
+            </div>
+
+            <div class="portfolio-item sertifikat">
+                <img src="gambar-sertifikat1.jpg" alt="Sertifikat Keahlian" class="portfolio-img-pure" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22250%22%20viewBox%3D%220%200%20400%20250%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22250%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20dy%3D%225%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3ESertifikat%201%20(Landscape)%3C%2Ftext%3E%3C%2Fsvg%3E'">
+            </div>
+
+            <div class="portfolio-item sertifikat">
+                <img src="gambar-sertifikat2.jpg" alt="Sertifikat Kelulusan" class="portfolio-img-pure" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22250%22%20viewBox%3D%220%200%20400%20250%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22250%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20dy%3D%225%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3ESertifikat%202%20(Landscape)%3C%2Ftext%3E%3C%2Fsvg%3E'">
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Kontak</h2>
+        <div class="contact-container">
+            <i class="fas fa-envelope-open-text"></i>
+            <h3 style="margin-bottom: 1rem; color: var(--text-main);">Mari Bekerja Sama!</h3>
+            <p style="margin-bottom: 2rem; color: var(--text-muted);">Apakah Anda mencari seseorang yang bisa mendesain tampilan secara presisi sekaligus menulis kodenya dengan bersih? Jangan ragu untuk menghubungi saya untuk berdiskusi lebih lanjut.</p>
+            <p style="font-weight: 600; margin-bottom: 2rem; color: var(--primary);">
+                <i class="fas fa-map-marker-alt" style="font-size: 1rem; margin-right: 5px;"></i> Tangerang Selatan, Indonesia
+            </p>
+            
+            <a href="mailto:ahmadshabbaahsyakur@gmail.com" class="btn btn-primary">Kirim Email</a>
+        </div>
+    </section>
+
+    <footer>
+        <ul class="footer-nav">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#portfolio">Portofolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ahmad Shabbaah Syakur - All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function filterPortfolio(category) {
+            // Mengatur status aktif pada tombol
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            if(event) {
+                event.target.classList.add('active');
+            }
+
+            // Menampilkan atau menyembunyikan item portofolio
+            const items = document.querySelectorAll('.portfolio-item');
+            items.forEach(item => {
+                if (item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Jalankan otomatis pertama kali saat halaman dimuat
+        document.addEventListener("DOMContentLoaded", function() {
+            filterPortfolio('kuliah');
+        });
+    </script>
+
+</body>
+
+</html>
