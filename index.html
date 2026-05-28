@@ -85,6 +85,18 @@
             text-shadow: 0 0 8px rgba(173, 198, 255, 0.4);
         }
 
+        /* Tombol Hamburger Menu (Sembunyi secara default di Desktop) */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: transform 0.2s;
+        }
+
         /* General Section Layout */
         section {
             padding: 7rem 5% 4rem;
@@ -401,10 +413,17 @@
         /* ==========================================================================
            Khusus Styling Gambar Portofolio SMK DKV (Responsive Portrait & Landscape)
            ========================================================================== */
-
+        
+        /* Kategori SMK DKV (Portrait / Landscape) */
+        @media (min-width: 768px) {
+            .portfolio-item.smk.landscape {
+                grid-column: span 2;
+            }
+        }
+        
         .portfolio-item.smk.portrait .portfolio-img-pure {
             width: 100%;
-            height: 540px; /* Tinggi proporsional portrait */
+            height: 480px; /* Tinggi proporsional portrait */
             object-fit: cover;
             display: block;
         }
@@ -453,6 +472,7 @@
             gap: 2rem;
             margin-bottom: 2rem;
             list-style: none;
+            flex-wrap: wrap;
         }
 
         .footer-nav a {
@@ -474,21 +494,66 @@
             margin: 0 auto;
         }
 
-        /* Responsive Design */
+        /* ==========================================================================
+           RESPONSIVE MEDIA QUERIES (PERBAIKAN BUG MOBILE VIEW)
+           ========================================================================== */
         @media (max-width: 768px) {
+            /* 1. Navigasi & Hamburger Menu */
+            .menu-toggle {
+                display: block; /* Tampilkan tombol garis tiga */
+            }
+
+            nav ul {
+                display: none; /* Sembunyikan menu bawaan */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(5, 20, 36, 0.95);
+                border-bottom: 1px solid var(--outline);
+                padding: 1.5rem 5%;
+                gap: 1.2rem;
+                text-align: center;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+
+            /* Class bantuan JavaScript untuk memunculkan menu */
+            nav ul.mobile-active {
+                display: flex;
+            }
+
+            /* 2. Profil & Konten Layout */
             .about-content {
                 flex-direction: column;
                 text-align: center;
             }
             .home-title {
-                font-size: 2.5rem;
+                font-size: 2.3rem;
             }
-            nav ul {
-                display: none;
+            .profile-pic {
+                width: 240px;
+                height: 240px;
             }
-            .portfolio-item.smk.landscape .portfolio-img-pure,
+
+            /* 3. Perbaikan Bug Gambar DKV Mobile (Agar Tetap Portrait & Tidak Terpotong) */
+            .portfolio-item.smk.landscape .portfolio-img-pure {
+                height: 200px; /* Ukuran landscape proporsional di HP */
+            }
+            
             .portfolio-item.smk.portrait .portfolio-img-pure {
-                height: 250px; /* Normalisasi ukuran di handphone agar seragam responsif */
+                height: 420px; /* Di-lock agar TETAP berbentuk PORTRAIT tinggi di layar HP */
+            }
+
+            .portfolio-item.sertifikat .portfolio-img-pure {
+                height: 190px; /* Menyesuaikan proporsi landscape sertifikat di HP */
+            }
+
+            /* 4. Perbaikan Bug Footer Mobile (Menu Navigasi Lebih Rapi & Tidak Menempel Samping) */
+            .footer-nav {
+                gap: 1rem 1.5rem; /* Mengatur jarak vertikal dan horizontal yang aman */
+                padding: 0 1rem;
             }
         }
     </style>
@@ -665,16 +730,15 @@
 
     <!-- JavaScript -->
     <script>
+        /* 1. Logika Filter Portofolio */
         function filterPortfolio(category) {
-            // Mengatur status aktif pada tombol
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             
-            if(event) {
+            if(event && event.target && event.target.classList.contains('tab-btn')) {
                 event.target.classList.add('active');
             }
 
-            // Menampilkan atau menyembunyikan item portofolio
             const items = document.querySelectorAll('.portfolio-item');
             items.forEach(item => {
                 if (item.classList.contains(category)) {
@@ -685,7 +749,32 @@
             });
         }
 
-        // Jalankan otomatis pertama kali saat halaman dimuat
+        /* 2. Logika Toggle Hamburger Menu Mobile */
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('mobile-active');
+            
+            // Mengubah icon bars (garis tiga) menjadi times (X) saat aktif
+            const icon = menuToggle.querySelector('i');
+            if(navMenu.classList.contains('mobile-active')) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
+        });
+
+        /* 3. Menutup Menu Otomatis Saat Link Navigasi Diklik (Untuk Mobile) */
+        const navLinks = document.querySelectorAll('#navMenu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('mobile-active');
+                menuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+            });
+        });
+
+        /* Eksekusi default saat halaman dimuat pertama kali */
         document.addEventListener("DOMContentLoaded", function() {
             filterPortfolio('kuliah');
         });
