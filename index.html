@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ahmad Shabbaah Syakur - Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- CSS -->
     <style>
         /* Deep Space Dark Palette & Variables */
         :root {
@@ -46,7 +50,7 @@
 
         /* Navigation Bar */
         nav {
-            background-color: rgba(5, 20, 36, 0.8.5);
+            background-color: rgba(5, 20, 36, 0.85); /* Diperbaiki dari 0.8.5 menjadi 0.85 */
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--outline);
@@ -411,27 +415,21 @@
         }
 
         /* ==========================================================================
-           Khusus Styling Gambar Portofolio SMK DKV (Responsive Portrait & Landscape)
+           FIX 4: Styling Gambar Portofolio SMK DKV (Rasio Tepat 4:5 1080x1350)
            ========================================================================== */
-        
-        /* Kategori SMK DKV (Portrait / Landscape) */
-        @media (min-width: 768px) {
-            .portfolio-item.smk.landscape {
-                grid-column: span 2;
-            }
-        }
         
         .portfolio-item.smk.portrait .portfolio-img-pure {
             width: 100%;
-            height: 500px; /* Tinggi proporsional portrait */
-            object-fit: cover;
+            /* Mengubah dari fixed height (480px) menjadi aspect-ratio menyesuaikan 1080x1350 */
+            height: auto; 
+            aspect-ratio: 4 / 5; 
+            object-fit: cover; /* Tidak akan memotong karena rasionya sudah 100% pas dengan gambar */
             display: block;
         }
 
-        /* Styling Khusus untuk Kategori Sertifikat (Landscape Grid) */
         .portfolio-item.sertifikat .portfolio-img-pure {
             width: 100%;
-            height: 230px; /* Mengunci tinggi agar rasio gambar menjadi landscape standar */
+            height: 230px;
             object-fit: cover;
             display: block;
         }
@@ -495,16 +493,16 @@
         }
 
         /* ==========================================================================
-           RESPONSIVE MEDIA QUERIES (PERBAIKAN BUG MOBILE VIEW)
+           RESPONSIVE MEDIA QUERIES (TAMPILAN MOBILE)
            ========================================================================== */
         @media (max-width: 768px) {
-            /* 1. Navigasi & Hamburger Menu */
+            /* Menampilkan Hamburger Menu */
             .menu-toggle {
-                display: block; /* Tampilkan tombol garis tiga */
+                display: block;
             }
 
             nav ul {
-                display: none; /* Sembunyikan menu bawaan */
+                display: none; 
                 flex-direction: column;
                 position: absolute;
                 top: 100%;
@@ -519,12 +517,10 @@
                 -webkit-backdrop-filter: blur(10px);
             }
 
-            /* Class bantuan JavaScript untuk memunculkan menu */
             nav ul.mobile-active {
                 display: flex;
             }
 
-            /* 2. Profil & Konten Layout */
             .about-content {
                 flex-direction: column;
                 text-align: center;
@@ -537,22 +533,14 @@
                 height: 240px;
             }
 
-            /* 3. Perbaikan Bug Gambar DKV Mobile (Agar Tetap Portrait & Tidak Terpotong) */
-            .portfolio-item.smk.landscape .portfolio-img-pure {
-                height: 200px; /* Ukuran landscape proporsional di HP */
-            }
-            
-            .portfolio-item.smk.portrait .portfolio-img-pure {
-                height: 420px; /* Di-lock agar TETAP berbentuk PORTRAIT tinggi di layar HP */
-            }
+            /* Untuk DKV Portrait, tidak perlu diubah lagi karena sudah otomatis aspect-ratio 4/5 mengikuti layar */
 
             .portfolio-item.sertifikat .portfolio-img-pure {
-                height: 190px; /* Menyesuaikan proporsi landscape sertifikat di HP */
+                height: 190px;
             }
 
-            /* 4. Perbaikan Bug Footer Mobile (Menu Navigasi Lebih Rapi & Tidak Menempel Samping) */
             .footer-nav {
-                gap: 1rem 1.5rem; /* Mengatur jarak vertikal dan horizontal yang aman */
+                gap: 1rem 1.5rem;
                 padding: 0 1rem;
             }
         }
@@ -563,7 +551,12 @@
 
     <nav>
         <a href="#home" class="logo">ahmdbahh</a>
-        <ul>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <ul id="navMenu">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#resume">Resume</a></li>
@@ -593,7 +586,7 @@
         <h2 class="section-title">Tentang Saya</h2>
         <div class="about-content">
             <div class="about-img">
-                <img src="DSC06990(3).jpg" alt="Foto Profil" class="profile-pic" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20fill%3D%22%23122131%22%20width%3D%22300%22%20height%3D%22300%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20dy%3D%2210.5%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EFoto%20Profil%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                <img src="profil.jpg" alt="Foto Profil" class="profile-pic" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20fill%3D%22%23122131%22%20width%3D%22300%22%20height%3D%22300%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20dy%3D%2210.5%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EFoto%20Profil%3C%2Ftext%3E%3C%2Fsvg%3E'">
             </div>
             <div class="about-text">
                 <p>Saat ini saya sedang menempuh pendidikan strata satu (S1) di jurusan <strong>Teknik Informatika</strong> Universitas Budi Luhur, dengan fondasi keilmuan desain dari masa <strong>SMK jurusan Desain Komunikasi Visual (DKV)</strong>.</p>
@@ -682,11 +675,11 @@
             </div>
 
            <div class="portfolio-item smk portrait">
-                <img src="Baldwin IV (yoru ni kakeru).jpg" alt="Karya DKV Portrait" class="portfolio-img-pure" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22600%22%20viewBox%3D%220%200%20400%20600%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22600%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2218%22%20dy%3D%227%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EKarya DKV 1 (Portrait Tall)%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                <img src="Baldwin IV (yoru ni kakeru).jpg" alt="Karya DKV Portrait" class="portfolio-img-pure" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22500%22%20viewBox%3D%220%200%20400%20500%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22500%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2218%22%20dy%3D%227%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EKarya DKV 1 (Portrait Tall)%3C%2Ftext%3E%3C%2Fsvg%3E'">
             </div>
 
             <div class="portfolio-item smk portrait">
-                <img src="Katchaw nih gengs 2.jpg" alt="Karya DKV Portrait" class="portfolio-img-pure" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22600%22%20viewBox%3D%220%200%20400%20600%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22600%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2218%22%20dy%3D%227%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EKarya DKV 2 (Portrait Tall)%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                <img src="Katchaw nih gengs 2.jpg" alt="Karya DKV Portrait" class="portfolio-img-pure" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22500%22%20viewBox%3D%220%200%20400%20500%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22500%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2218%22%20dy%3D%227%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EKarya DKV 2 (Portrait Tall)%3C%2Ftext%3E%3C%2Fsvg%3E'">
             </div>
 
             <div class="portfolio-item sertifikat">
@@ -728,7 +721,6 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
         /* 1. Logika Filter Portofolio */
         function filterPortfolio(category) {
@@ -756,7 +748,6 @@
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('mobile-active');
             
-            // Mengubah icon bars (garis tiga) menjadi times (X) saat aktif
             const icon = menuToggle.querySelector('i');
             if(navMenu.classList.contains('mobile-active')) {
                 icon.classList.replace('fa-bars', 'fa-times');
@@ -765,12 +756,13 @@
             }
         });
 
-        /* 3. Menutup Menu Otomatis Saat Link Navigasi Diklik (Untuk Mobile) */
+        /* 3. Menutup Menu Otomatis Saat Link Navigasi Diklik */
         const navLinks = document.querySelectorAll('#navMenu a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('mobile-active');
-                menuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                const icon = menuToggle.querySelector('i');
+                if (icon) icon.classList.replace('fa-times', 'fa-bars');
             });
         });
 
@@ -781,5 +773,4 @@
     </script>
 
 </body>
-
 </html>
