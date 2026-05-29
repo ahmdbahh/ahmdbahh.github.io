@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Shabbaah Syakur - Portfolio</title>
+    <title>Ahmad Shabbaah Syakur - Website Portfolio</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +11,7 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- CSS -->
     <style>
         /* Deep Space Dark Palette & Variables */
         :root {
@@ -50,7 +51,7 @@
 
         /* Navigation Bar */
         nav {
-            background-color: rgba(5, 20, 36, 0.85); /* Diperbaiki dari 0.8.5 menjadi 0.85 */
+            background-color: rgba(5, 20, 36, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--outline);
@@ -89,7 +90,7 @@
             text-shadow: 0 0 8px rgba(173, 198, 255, 0.4);
         }
 
-        /* Tombol Hamburger Menu (Sembunyi secara default di Desktop) */
+        /* Menu garis tiga untuk tampilan Mobile */
         .menu-toggle {
             display: none;
             background: none;
@@ -362,7 +363,8 @@
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(290px, 340px));
+            justify-content: center;
             gap: 2rem;
             max-width: 1100px;
             margin: 0 auto;
@@ -414,22 +416,10 @@
             font-size: 0.95rem;
         }
 
-        /* ==========================================================================
-           FIX 4: Styling Gambar Portofolio SMK DKV (Rasio Tepat 4:5 1080x1350)
-           ========================================================================== */
-        
         .portfolio-item.smk.portrait .portfolio-img-pure {
             width: 100%;
-            /* Mengubah dari fixed height (480px) menjadi aspect-ratio menyesuaikan 1080x1350 */
             height: auto; 
             aspect-ratio: 4 / 5; 
-            object-fit: cover; /* Tidak akan memotong karena rasionya sudah 100% pas dengan gambar */
-            display: block;
-        }
-
-        .portfolio-item.sertifikat .portfolio-img-pure {
-            width: 100%;
-            height: 230px;
             object-fit: cover;
             display: block;
         }
@@ -492,11 +482,8 @@
             margin: 0 auto;
         }
 
-        /* ==========================================================================
-           RESPONSIVE MEDIA QUERIES (TAMPILAN MOBILE)
-           ========================================================================== */
         @media (max-width: 768px) {
-            /* Menampilkan Hamburger Menu */
+            /* Menampilkan Menu garis tiga untuk tampilan Mobile */
             .menu-toggle {
                 display: block;
             }
@@ -532,23 +519,19 @@
                 width: 240px;
                 height: 240px;
             }
-
-            /* Untuk DKV Portrait, tidak perlu diubah lagi karena sudah otomatis aspect-ratio 4/5 mengikuti layar */
-
-            .portfolio-item.sertifikat .portfolio-img-pure {
-                height: 190px;
-            }
-
             .footer-nav {
                 gap: 1rem 1.5rem;
                 padding: 0 1rem;
             }
         }
     </style>
+
 </head>
+
 
 <body>
 
+    <!-- Navigation Bar-->
     <nav>
         <a href="#home" class="logo">ahmdbahh</a>
         
@@ -565,10 +548,11 @@
         </ul>
     </nav>
 
+    <!-- Home Section -->
     <section id="home">
         <p class="home-intro">Selamat datang di website portofolio</p>
         <h1 class="home-title">Ahmad Shabbaah Syakur</h1>
-        <h2 class="home-subtitle">UI/UX Designer & Mobile Developer</h2>
+        <h2 class="home-subtitle">Mahasiswa Teknik Informatika Universitas Budi Luhur</h2>
         
         <div class="home-buttons">
             <a href="#contact" class="btn btn-primary">Hubungi Saya</a>
@@ -576,12 +560,13 @@
         </div>
 
         <div class="social-icons">
-            <a href="https://ahmdbahh.github.io/" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/ahmdbahh/" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://linkedin.com/in/ahmad-shabbaah-syakur-767140304" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://instagram.com/ahmd.bahh/" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
     </section>
 
+    <!-- About Section -->
     <section id="about">
         <h2 class="section-title">Tentang Saya</h2>
         <div class="about-content">
@@ -589,46 +574,46 @@
                 <img src="profil.jpg" alt="Foto Profil" class="profile-pic" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20fill%3D%22%23122131%22%20width%3D%22300%22%20height%3D%22300%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20dy%3D%2210.5%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EFoto%20Profil%3C%2Ftext%3E%3C%2Fsvg%3E'">
             </div>
             <div class="about-text">
-                <p>Saat ini saya sedang menempuh pendidikan strata satu (S1) di jurusan <strong>Teknik Informatika</strong> Universitas Budi Luhur, dengan fondasi keilmuan desain dari masa <strong>SMK jurusan Desain Komunikasi Visual (DKV)</strong>.</p>
+                <p>Saat ini saya sedang menempuh pendidikan (S1) prodi <strong>Teknik Informatika</strong> dengan peminatan <strong>AI for Computer Vision</strong>.</p>
                 
-                <p>Kombinasi dua bidang ini membentuk peminatan utama saya: menjembatani estetika visual dengan logika pemrograman. Saya memiliki ketertarikan kuat pada <strong>Mobile Application Development</strong> (Java, Flutter, React Native) serta <strong>UI/UX Design</strong>.</p>
+                <p>Saya memiliki ketertarikan pada <strong>Computer Vision</strong> serta <strong>UI/UX Design</strong>.</p>
                 
-                <p>Selain itu, saya juga aktif mengeksplorasi integrasi Kecerdasan Buatan (AI) dan pengolahan citra digital (Python/OpenCV) ke dalam pengembangan perangkat lunak modern.</p>
+                <p>Selain itu, saya juga suka membuat desain poster dan konten video ketika senggang.</p>
             </div>
         </div>
     </section>
 
+    <!-- Resume Section -->
     <section id="resume">
         <h2 class="section-title">Resume</h2>
         <div class="grid-2">
             <div class="card">
                 <h3>Pendidikan</h3>
-                <div style="margin-bottom: 1.5rem;">
+                <div style="margin-bottom: 3.5rem;">
                     <strong>Universitas Budi Luhur</strong>
                     <p style="color: var(--primary); font-size: 0.9rem; margin-bottom: 0.3rem;">S1 Teknik Informatika (2024 - Sekarang)</p>
-                    <p style="font-size: 0.95rem;">Fokus pada pengembangan perangkat lunak, kecerdasan buatan, dan arsitektur sistem informasi.</p>
+                    <p style="font-size: 0.95rem;">Mempelajari bahasa pemrograman, analisis data, kecerdasan artifisial, pengembangan aplikasi & web, jaringan komputer, dan computer vision.</p>
                 </div>
                 <div>
                     <strong>SMK Negeri 2 Kota Tangerang Selatan</strong>
                     <p style="color: var(--secondary); font-size: 0.9rem; margin-bottom: 0.3rem;">Desain Komunikasi Visual (2021 - 2024)</p>
-                    <p style="font-size: 0.95rem;">Mempelajari prinsip desain, tipografi, kombinasi warna, dan komunikasi visual grafis.</p>
+                    <p style="font-size: 0.95rem;">Mempelajari prinsip desain, tipografi, digital imaging, fotografi, videografi, dan video editing.</p>
                 </div>
             </div>
 
             <div class="card">
                 <h3>Keterampilan</h3>
-                <p style="font-size: 0.95rem; margin-bottom: 1rem;">Menggabungkan kreativitas desain dengan kemampuan teknis pemrograman modern.</p>
+                <p style="font-size: 0.95rem; margin-bottom: 1rem;">Menggabungkan keterampilan di bidang IT dan DKV.</p>
                 
                 <strong style="font-size: 0.9rem; color: var(--primary);">Development & Programming</strong>
                 <div class="skill-tags">
-                    <span class="tag code">Android Studio</span>
-                    <span class="tag code">Google Colab</span>
-                    <span class="tag code">Flutter</span>
-                    <span class="tag code">React Native</span>
-                    <span class="tag code">Python & OpenCV</span>
+                    <span class="tag code">Web & Mobile App Development</span>
+                    <span class="tag code">Natural Language Processing</span>
+                    <span class="tag code">Computer Vision</span>
+                    <span class="tag code">Data Analysis</span>
                 </div>
 
-                <strong style="font-size: 0.9rem; display: block; margin-top: 1.5rem; color: var(--secondary);">Desain & Editing</strong>
+                <strong style="font-size: 0.9rem; display: block; margin-top: 1.5rem; color: var(--secondary);">Design & Editing</strong>
                 <div class="skill-tags">
                     <span class="tag design">Graphic Design</span>
                     <span class="tag design">Poster Design</span>
@@ -639,42 +624,44 @@
         </div>
     </section>
 
+    <!-- Portofolio Section-->
     <section id="portfolio">
         <h2 class="section-title">Portofolio</h2>
         
         <div class="portfolio-tabs">
             <button class="tab-btn active" onclick="filterPortfolio('kuliah')">IT</button>
             <button class="tab-btn" onclick="filterPortfolio('smk')">DKV</button>
-            <button class="tab-btn" onclick="filterPortfolio('sertifikat')">Sertifikat</button>
         </div>
 
         <div class="portfolio-grid">
             
+            <!-- IT -->
             <div class="portfolio-item kuliah">
-                <img src="gambar-app-berita.jpg" alt="Aplikasi Berita" class="portfolio-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22200%22%20viewBox%3D%220%200%20400%20200%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22200%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20dy%3D%225%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EGambar Project 1%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                <img src="websiteportofolio.png" alt="Aplikasi Berita" class="portfolio-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22200%22%20viewBox%3D%220%200%20400%20200%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22200%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20dy%3D%225%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EGambar Project 1%3C%2Ftext%3E%3C%2Fsvg%3E'">
                 <div class="portfolio-info">
-                    <h4>Aplikasi Pembaca Berita TTS</h4>
-                    <p>Integrasi model Text-to-Speech (Tacotron2/FastSpeech2) pada aplikasi mobile berbahasa Indonesia.</p>
+                    <h4>Website Portofolio</h4>
+                    <p>Projek matakuliah Pemrograman Web yaitu membuat website portofolio pribadi dengan tema warna dark space.</p>
                 </div>
             </div>
 
             <div class="portfolio-item kuliah">
-                <img src="gambar-opencv.jpg" alt="Sistem Pengukuran" class="portfolio-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22200%22%20viewBox%3D%220%200%20400%20200%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22200%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20dy%3D%225%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EGambar Project 2%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                <img src="aplikasipcd.png" alt="Sistem Pengukuran" class="portfolio-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22200%22%20viewBox%3D%220%200%20400%20200%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22200%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20dy%3D%225%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EGambar Project 2%3C%2Ftext%3E%3C%2Fsvg%3E'">
                 <div class="portfolio-info">
-                    <h4>Pengolahan Citra Digital</h4>
-                    <p>Proyek Python & OpenCV menggunakan metode filtering CLAHE dan deteksi tepi Sobel untuk analisis gambar digital.</p>
+                    <h4>Aplikasi Pengukuran Kaki</h4>
+                    <p>Projek matakuliah Pengolahan Citra Digital yaitu membuat aplikasi streamlit untuk mengukur ukuran kaki dengan kartu KTP/ATM sebagai referensi ukuran pixel to cm.</p>
                 </div>
             </div>
 
             <div class="portfolio-item kuliah">
-                <img src="gambar-mobile.jpg" alt="Mobile UI" class="portfolio-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22200%22%20viewBox%3D%220%200%20400%20200%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22200%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20dy%3D%225%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EGambar Project 3%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                <img src="evaluasiwer.png" alt="Mobile UI" class="portfolio-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22200%22%20viewBox%3D%220%200%20400%20200%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22200%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20dy%3D%225%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EGambar Project 3%3C%2Ftext%3E%3C%2Fsvg%3E'">
                 <div class="portfolio-info">
-                    <h4>Android Layout Management</h4>
-                    <p>Implementasi UI/UX design ke dalam format XML pada Android Studio menggunakan figma-to-code principles.</p>
+                    <h4>Evaluasi Word Error Rate</h4>
+                    <p>Projek matakuliah Computer Vision yaitu mengevaluasi Word Error Rate dengan variasi panjang kalimat suara pada sistem Speech Recognition.</p>
                 </div>
             </div>
 
-           <div class="portfolio-item smk portrait">
+            <!-- DKV -->
+            <div class="portfolio-item smk portrait">
                 <img src="Baldwin IV (yoru ni kakeru).jpg" alt="Karya DKV Portrait" class="portfolio-img-pure" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22500%22%20viewBox%3D%220%200%20400%20500%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22500%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2218%22%20dy%3D%227%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EKarya DKV 1 (Portrait Tall)%3C%2Ftext%3E%3C%2Fsvg%3E'">
             </div>
 
@@ -682,23 +669,16 @@
                 <img src="Katchaw nih gengs 2.jpg" alt="Karya DKV Portrait" class="portfolio-img-pure" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22500%22%20viewBox%3D%220%200%20400%20500%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22500%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2218%22%20dy%3D%227%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EKarya DKV 2 (Portrait Tall)%3C%2Ftext%3E%3C%2Fsvg%3E'">
             </div>
 
-            <div class="portfolio-item sertifikat">
-                <img src="gambar-sertifikat1.jpg" alt="Sertifikat Keahlian" class="portfolio-img-pure" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22250%22%20viewBox%3D%220%200%20400%20250%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22250%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20dy%3D%225%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3ESertifikat%201%20(Landscape)%3C%2Ftext%3E%3C%2Fsvg%3E'">
-            </div>
-
-            <div class="portfolio-item sertifikat">
-                <img src="gambar-sertifikat2.jpg" alt="Sertifikat Kelulusan" class="portfolio-img-pure" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22250%22%20viewBox%3D%220%200%20400%20250%22%3E%3Crect%20fill%3D%22%231c2b3c%22%20width%3D%22400%22%20height%3D%22250%22%2F%3E%3Ctext%20fill%3D%22%23424754%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20dy%3D%225%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3ESertifikat%202%20(Landscape)%3C%2Ftext%3E%3C%2Fsvg%3E'">
-            </div>
-
         </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact">
         <h2 class="section-title">Kontak</h2>
         <div class="contact-container">
             <i class="fas fa-envelope-open-text"></i>
-            <h3 style="margin-bottom: 1rem; color: var(--text-main);">Mari Bekerja Sama!</h3>
-            <p style="margin-bottom: 2rem; color: var(--text-muted);">Apakah Anda mencari seseorang yang bisa mendesain tampilan secara presisi sekaligus menulis kodenya dengan bersih? Jangan ragu untuk menghubungi saya untuk berdiskusi lebih lanjut.</p>
+            <h3 style="margin-bottom: 1rem; color: var(--text-main);">Let's Connect</h3>
+            <p style="margin-bottom: 2rem; color: var(--text-muted);">Ingin menjalin kerjasama atau berdiskusi? Hubungi saya melalui media sosial atau email di bawah ini.</p>
             <p style="font-weight: 600; margin-bottom: 2rem; color: var(--primary);">
                 <i class="fas fa-map-marker-alt" style="font-size: 1rem; margin-right: 5px;"></i> Tangerang Selatan, Indonesia
             </p>
@@ -707,6 +687,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <ul class="footer-nav">
             <li><a href="#home">Home</a></li>
@@ -721,8 +702,9 @@
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        /* 1. Logika Filter Portofolio */
+        /* Logika filter Portofolio */
         function filterPortfolio(category) {
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
@@ -741,7 +723,7 @@
             });
         }
 
-        /* 2. Logika Toggle Hamburger Menu Mobile */
+        /* 2. Logika Menu garis tiga untuk tampilan Mobile */
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
 
@@ -756,7 +738,7 @@
             }
         });
 
-        /* 3. Menutup Menu Otomatis Saat Link Navigasi Diklik */
+        /* Menutup Menu otomatis saat link navigasi diklik */
         const navLinks = document.querySelectorAll('#navMenu a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -773,4 +755,5 @@
     </script>
 
 </body>
+
 </html>
